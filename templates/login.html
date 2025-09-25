@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f6f9;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h2 {
+            margin-bottom: 25px;
+            color: #2563eb;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .login-box input:focus {
+            border-color: #2563eb;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-box button:hover {
+            background: #1e40af;
+        }
+
+        .login-box p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .login-box a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .errors {
+            color: red;
+            font-size: 0.8em;
+            background-color: rgb(255, 217, 217);
+            height: 2.5em;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username">
+            {% if errors.username %}
+            <p class="errors">{{errors.username}}</p>
+            {% endif %}
+
+            <input type="password" name="password" placeholder="Password">
+            {% if errors.password %}
+            <p class="errors">{{errors.password}}</p>
+            {% endif %}
+
+            <button type="submit">Login</button>
+
+            {% if errors.eusername %}
+            <p class="errors">{{errors.eusername}}</p>
+            {% endif %}
+        </form>
+        <p>Don't have an account? <a href="/">Register</a></p>
+    </div>
+</body>
+
+</html>
